@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".DetalhesActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed"
+            app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/im_local"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="0dp" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/im_casa_detalhes"
+                android:layout_width="@dimen/imagem_tamanho_padrao"
+                android:layout_height="@dimen/imagem_tamanho_padrao"
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_descricao_detalhes"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_descricao_detalhes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margem_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Match Description" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/ratbar_casa_estrelas"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem_padrao"
+                app:layout_constraintEnd_toEndOf="@+id/im_casa_detalhes"
+                app:layout_constraintStart_toStartOf="@+id/im_casa_detalhes"
+                app:layout_constraintTop_toBottomOf="@+id/im_casa_detalhes" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_casa_nome_detalhes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toEndOf="@+id/im_casa_detalhes"
+                app:layout_constraintStart_toStartOf="@+id/im_casa_detalhes"
+                app:layout_constraintTop_toBottomOf="@+id/ratbar_casa_estrelas"
+                tools:text="Home Team" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_casa_placar_detalhes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBottom_toBottomOf="@+id/im_casa_detalhes"
+                app:layout_constraintEnd_toStartOf="@+id/tv_versus_detalhes"
+                app:layout_constraintStart_toEndOf="@+id/im_casa_detalhes"
+                app:layout_constraintTop_toTopOf="@+id/im_casa_detalhes"
+                tools:text="99" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_versus_detalhes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/sinal_versus"
+                app:layout_constraintBottom_toBottomOf="@+id/im_casa_detalhes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/im_casa_detalhes" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/im_visitante_detalhes"
+                android:layout_width="@dimen/imagem_tamanho_padrao"
+                android:layout_height="@dimen/imagem_tamanho_padrao"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:layout_marginEnd="@dimen/margem_padrao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_descricao_detalhes"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/ratbar_visitante_estrelas"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem_padrao"
+                app:layout_constraintEnd_toEndOf="@+id/im_visitante_detalhes"
+                app:layout_constraintStart_toStartOf="@+id/im_visitante_detalhes"
+                app:layout_constraintTop_toBottomOf="@+id/im_visitante_detalhes" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_visitante_nome_detalhes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margem_padrao"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintEnd_toEndOf="@+id/im_visitante_detalhes"
+                app:layout_constraintStart_toStartOf="@+id/im_visitante_detalhes"
+                app:layout_constraintTop_toBottomOf="@+id/ratbar_visitante_estrelas"
+                tools:text="Away Team" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_visitante_placar_detalhes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintBottom_toBottomOf="@+id/im_visitante_detalhes"
+                app:layout_constraintEnd_toStartOf="@+id/im_visitante_detalhes"
+                app:layout_constraintStart_toEndOf="@+id/tv_versus_detalhes"
+                app:layout_constraintTop_toTopOf="@+id/im_visitante_detalhes"
+                tools:text="99" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

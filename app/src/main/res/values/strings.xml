@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Simulador de Partidas</string>
+    <string name="sinal_versus">X</string>
+    <string name="placar_visitante">99</string>
+    <string name="placar_casa">99</string>
+    <string name="nome_visitante">TextView</string>
+    <string name="nome_casa">TextView</string>
+</resources>
