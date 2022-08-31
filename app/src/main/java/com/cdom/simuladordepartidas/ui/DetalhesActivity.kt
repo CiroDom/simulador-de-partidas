@@ -1,4 +1,4 @@
-package com.cdom.simuladordepartidas
+package com.cdom.simuladordepartidas.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +13,7 @@ class DetalhesActivity : AppCompatActivity() {
         binding = ActivityDetalhesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        setSupportActionBar(binding.toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 }

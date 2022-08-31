@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cdom.simuladordepartidas">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimuladorDePartidas">
         <activity
-            android:name=".DetalhesActivity"
-            android:exported="false" />
+            android:name=".ui.DetalhesActivity"
+            android:theme="@style/Theme.SimuladorDePartidas.NoActionBar"
+            android:exported="true">
+        </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
