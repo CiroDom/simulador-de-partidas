@@ -6,7 +6,7 @@ data class Time(
     @SerializedName("nome")
     val nome: String,
     @SerializedName("forca")
-    val forca: Int,
+    val estrelas: Int,
     @SerializedName("imagem")
     val imagem: String
 )

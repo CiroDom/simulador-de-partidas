@@ -10,7 +10,6 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-
        <androidx.appcompat.widget.AppCompatImageView
            android:id="@+id/im_casa"
            android:layout_width="@dimen/imagem_tamanho_padrao"

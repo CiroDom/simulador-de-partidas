@@ -2,17 +2,19 @@ package com.cdom.simuladordepartidas.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cdom.simuladordepartidas.classesdominio.Partida
 import com.cdom.simuladordepartidas.dados.PartidasAPI
 import com.cdom.simuladordepartidas.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var partidasAdapter: PartidasAdapter
     private lateinit var partidasAPI: PartidasAPI
     private lateinit var binding: ActivityMainBinding
 
@@ -24,20 +26,26 @@ class MainActivity : AppCompatActivity() {
 
         setupHttpClient()
         setupListaPartidas()
-        setupAtualizarPartidas()
-        setupFAB()
+//        setupAtualizarPartidas()
+//        setupFAB()
     }
 
     private fun setupHttpClient() {
-        PartidasAPI.criarInstRetrofit()
+        partidasAPI = PartidasAPI.criarInstRetrofit()
     }
 
     private fun setupListaPartidas() {
-        //SOB TESTE E EM DÚVIDA
-        partidasAPI.getPartidas().enqueue(object : Callback, retrofit2.Callback<List<Partida>> {
+        val rView = binding.recyViewPartidas
+        rView.setHasFixedSize(true)
+        rView.layoutManager = LinearLayoutManager(this)
+
+        partidasAPI.getPartidas().enqueue(object : Callback<List<Partida>> {
+
             override fun onResponse(call: Call<List<Partida>>, response: Response<List<Partida>>) {
-                if (response.isSuccessful){
-                    val partidas = response.body() //ver diferença de sem e com o body()
+                if(response.isSuccessful) {
+                    val partidas = response.body()!!
+                    partidasAdapter = PartidasAdapter(partidas)
+                    rView.adapter = partidasAdapter
                 }
                 else {
                     mensagemErro()
