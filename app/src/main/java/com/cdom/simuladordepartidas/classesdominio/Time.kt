@@ -8,5 +8,6 @@ data class Time(
     @SerializedName("forca")
     val estrelas: Int,
     @SerializedName("imagem")
-    val imagem: String
+    val imagem: String,
+    var placar: Int
 )

@@ -22,8 +22,8 @@
 
        <androidx.appcompat.widget.AppCompatImageView
            android:id="@+id/im_visitante"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="@dimen/imagem_tamanho_padrao"
+           android:layout_height="@dimen/imagem_tamanho_padrao"
            android:layout_marginEnd="@dimen/margem_padrao"
            app:layout_constraintTop_toTopOf="@+id/im_casa"
            app:layout_constraintBottom_toBottomOf="@+id/im_casa"
