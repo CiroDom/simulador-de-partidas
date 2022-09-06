@@ -13,6 +13,7 @@
         android:theme="@style/Theme.SimuladorDePartidas">
         <activity
             android:name=".ui.DetalhesActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/Theme.SimuladorDePartidas.NoActionBar"
             android:exported="true">
         </activity>

@@ -1,7 +1,10 @@
 package com.cdom.simuladordepartidas.classesdominio
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Partida(
     @SerializedName("descricao")
     val descricao: String,
@@ -11,4 +14,4 @@ data class Partida(
     val timeCasa: Time,
     @SerializedName("visitante")
     val timeVisitante: Time
-)
+) : Parcelable

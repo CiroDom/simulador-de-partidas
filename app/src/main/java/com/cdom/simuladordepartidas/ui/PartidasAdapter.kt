@@ -1,5 +1,6 @@
 package com.cdom.simuladordepartidas.ui
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,10 +21,11 @@ class PartidasAdapter (val partidas: List<Partida>) :
     }
 
     override fun onBindViewHolder(holder: VHolder, position: Int) {
-        var contexto = holder.itemView.context
+        val contexto = holder.itemView.context
         val partida = partidas[position]
 
         val hbinding = holder.binding
+
         // da casa
         hbinding.tvNomeCasa.text = partida.timeCasa.nome
         Glide.with(contexto).load(partida.timeCasa.imagem).circleCrop().into(hbinding.imCasa) //igual (=) sem e com
@@ -32,6 +34,12 @@ class PartidasAdapter (val partidas: List<Partida>) :
         hbinding.tvNomeVisitante.text = partida.timeVisitante.nome
         Glide.with(contexto).load(partida.timeVisitante.imagem).circleCrop().into(hbinding.imVisitante) //igual (=) sem e com
         hbinding.tvPlacarVisitante.text = partida.timeVisitante.placar.toString()
+
+        holder.itemView.setOnClickListener{
+            val intent = Intent(contexto, DetalhesActivity::class.java)
+            intent.putExtra(DetalhesActivity.Extras.PARTIDA, partida)
+            contexto.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
