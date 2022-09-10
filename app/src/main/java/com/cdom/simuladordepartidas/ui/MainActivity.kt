@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupListaPartidas() {
         rView.setHasFixedSize(true)
         rView.layoutManager = LinearLayoutManager(this)
-
+        partidasAdapter = PartidasAdapter(emptyList()) //no curso essa info fica na propriety
+        rView.adapter = partidasAdapter
         buscarPartidasDaAPI()
     }
 
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         val fabSimular = binding.fabSimular
         fabSimular.setOnClickListener{ botao ->
             botao.animate().rotationBy(360f).setDuration(500).setListener(object : AnimatorListenerAdapter(){
-                override fun onAnimationEnd(animation: Animator?) {
+                override fun onAnimationEnd(animation: Animator) {
                     super.onAnimationEnd(animation)
                     simularNovaPartida()
                 }

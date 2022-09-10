@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "778097554807",
+    "project_id": "simulador-partidas-santander",
+    "storage_bucket": "simulador-partidas-santander.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778097554807:android:d853a8b9d49986b9325d72",
+        "android_client_info": {
+          "package_name": "com.cdom.simuladordepartidas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778097554807-d7om6v901kfqe7kf0ndpjn9qujgkh8rc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0HjLfg6VBXsc4VIcE8K5hjYB603FJVVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778097554807-d7om6v901kfqe7kf0ndpjn9qujgkh8rc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

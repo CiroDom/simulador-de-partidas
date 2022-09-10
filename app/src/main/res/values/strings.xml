@@ -3,8 +3,8 @@
     <string name="sinal_versus">X</string>
 
     <string name="nome_casa">Time da casa</string>
-    <string name="placar_casa" />
+    <string name="placar_casa">99</string>
 
     <string name="nome_visitante">Time visitante</string>
-    <string name="placar_visitante" />
+    <string name="placar_visitante">99</string>
 </resources>
