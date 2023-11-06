@@ -1,9 +1,9 @@
-package com.cdom.simuladordepartidas.ui
+package com.cdom.simuladordepartidas.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.cdom.simuladordepartidas.classesdominio.Partida
+import com.cdom.simuladordepartidas.core.models.Partida
 import com.cdom.simuladordepartidas.databinding.ActivityDetalhesBinding
 
 class DetalhesActivity : AppCompatActivity() {

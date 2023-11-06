@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimuladorDePartidas">
         <activity
-            android:name=".ui.DetalhesActivity"
-            android:parentActivityName=".ui.MainActivity"
+            android:name=".ui.activities.DetalhesActivity"
+            android:parentActivityName=".ui.activities.MainActivity"
             android:theme="@style/Theme.SimuladorDePartidas.NoActionBar"
             android:exported="true">
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

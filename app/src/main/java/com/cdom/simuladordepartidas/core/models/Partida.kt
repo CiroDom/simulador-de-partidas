@@ -1,4 +1,4 @@
-package com.cdom.simuladordepartidas.classesdominio
+package com.cdom.simuladordepartidas.core.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
