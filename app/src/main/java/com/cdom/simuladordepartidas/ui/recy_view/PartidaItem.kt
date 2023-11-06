@@ -27,7 +27,7 @@ class PartidaItem(private val partida: Partida) : Item<PartidaItem.PartidaVHolde
         Glide.with(context).load(partida.timeVisitante.imagem).circleCrop().into(holderBinding.imVisitante)
 
         holder.itemView.setOnClickListener {
-            TODO("Intent")
+            TODO("Go to detail actv")
         }
 
     }

@@ -10,12 +10,34 @@ class MainPresenter(
     private val dataSource: PartidaRemoteDataSource = PartidaRemoteDataSource()
 ) : OurCallbacks {
 
+    private lateinit var partidas: List<Partida>
+
     override fun onSucess(response: List<Partida>) {
-        view.showPartidas(response)
+        view.swipePartidas.isRefreshing = false
+        view.partidasOk = true
+        partidas = response
+        view.showPartidas(partidas)
     }
 
-    fun buscarPartidas() {
-        dataSource.buscarPartidasDaAPI(this)
+    override fun onError(response: String) {
+        view.swipePartidas.isRefreshing = false
+        view.partidasOk = false
+        view.showSnackBar(response)
+    }
+
+    fun findPartidas() {
+        dataSource.findPartidasFromAPI(this)
+    }
+
+    fun newScore() {
+        fun randomScore(stars: Int) : Int {
+            return (0..stars).random()
+        }
+
+        partidas.forEach { partida ->
+            partida.timeCasa.placar = randomScore(partida.timeCasa.estrelas)
+            partida.timeVisitante.placar = randomScore(partida.timeVisitante.estrelas)
+        }
     }
 
 }
