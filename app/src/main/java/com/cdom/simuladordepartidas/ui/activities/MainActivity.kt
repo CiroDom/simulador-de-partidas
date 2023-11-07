@@ -41,11 +41,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupRecyView()
-        setupRefresh()
+//        setupRefresh()
         setupFAB()
     }
 
     private fun setupRecyView() {
+        recyView.setHasFixedSize(true)
         recyView.layoutManager = LinearLayoutManager(this)
 
         presenter.findPartidas()
@@ -53,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         recyView.adapter = groupieAdapter
     }
 
-    private fun setupRefresh() {
-        presenter.findPartidas()
-    }
+//    private fun setupRefresh() {
+//        presenter.findPartidas()
+//    }
 
     private fun setupFAB() {
         val fabSimular = binding.fabSimular
@@ -73,9 +74,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showPartidas(partidas: List<Partida>) {
-        val partidaItens = partidas.map { PartidaItem(it) }
-        groupieAdapter.addAll(partidaItens)
+    fun showPartidas(response: List<Partida>) {
+        val listPartidaItem = response.map { PartidaItem(it) }
+        groupieAdapter.addAll(listPartidaItem)
         groupieAdapter.notifyDataSetChanged()
     }
 

@@ -1,5 +1,6 @@
 package com.cdom.simuladordepartidas.core.http
 
+import android.util.Log
 import com.cdom.simuladordepartidas.core.models.Partida
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +21,7 @@ class PartidaRemoteDataSource {
                         val partidas = response.body()
 
                         callback.onSucess(partidas ?: emptyList())
+                        Log.i(null, "dataSource: ressource is successful")
                     } else {
                         val error =
                             if (response.errorBody() != null) {
@@ -29,10 +31,12 @@ class PartidaRemoteDataSource {
                             }
 
                         callback.onError("Erro na chamada: $error")
+                        Log.i(null, "dataSource: ressource NOT successful")
                     }
                 }
                 override fun onFailure(call: Call<List<Partida>>, t: Throwable) {
                     callback.onError(t.message ?: "Erro interno")
+                    Log.i(null, "dataSource: onError")
                 }
             })
     }
