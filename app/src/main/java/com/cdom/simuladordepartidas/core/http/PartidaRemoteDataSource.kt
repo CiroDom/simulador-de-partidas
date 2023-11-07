@@ -9,6 +9,8 @@ import retrofit2.Response
 class PartidaRemoteDataSource {
 
     fun findPartidasFromAPI(callback: OurCallbacks) {
+        Log.i("dataSource", "findPartidasFromAPI")
+
         HTTPClient.buildRetrofit()
             .create(PartidasAPI::class.java)
             .getPartidas()
@@ -21,7 +23,7 @@ class PartidaRemoteDataSource {
                         val partidas = response.body()
 
                         callback.onSucess(partidas ?: emptyList())
-                        Log.i(null, "dataSource: ressource is successful")
+                        Log.i("dataSource", "ressource is successful")
                     } else {
                         val error =
                             if (response.errorBody() != null) {
@@ -31,12 +33,12 @@ class PartidaRemoteDataSource {
                             }
 
                         callback.onError("Erro na chamada: $error")
-                        Log.i(null, "dataSource: ressource NOT successful")
+                        Log.i("dataSource", "ressource NOT successful")
                     }
                 }
                 override fun onFailure(call: Call<List<Partida>>, t: Throwable) {
                     callback.onError(t.message ?: "Erro interno")
-                    Log.i(null, "dataSource: onError")
+                    Log.i("dataSource", "onFailure")
                 }
             })
     }

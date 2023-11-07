@@ -14,22 +14,23 @@ class MainPresenter(
     private lateinit var partidas: List<Partida>
 
     override fun onSucess(response: List<Partida>) {
-        Log.i(null, "chegou no onSucess")
+        Log.i("Presenter", "chegou no onSucess")
         view.swipePartidas.isRefreshing = false
         view.partidasOk = true
         partidas = response
         view.showPartidas(partidas)
-        Log.i(null, "chegou no showPartidas")
+        Log.i("Presenter", "chegou no showPartidas")
     }
 
     override fun onError(response: String) {
-        Log.i(null, "chegou no onError")
+        Log.i("Presenter", "chegou no onError")
         view.swipePartidas.isRefreshing = false
         view.partidasOk = false
         view.showSnackBar(response)
     }
 
     fun findPartidas() {
+        Log.i("Presenter", "findPartidas")
         dataSource.findPartidasFromAPI(this)
     }
 
