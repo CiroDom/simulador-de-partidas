@@ -3,16 +3,14 @@ package com.cdom.simuladordepartidas.ui.activities
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cdom.simuladordepartidas.core.models.Partida
 import com.cdom.simuladordepartidas.core.presenters.MainPresenter
 import com.cdom.simuladordepartidas.databinding.ActivityMainBinding
-import com.cdom.simuladordepartidas.ui.recy_view.PartidaItem
+import com.cdom.simuladordepartidas.ui.recy_view.PartidasAdapter
 import com.google.android.material.snackbar.Snackbar
-import com.xwray.groupie.GroupieAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,8 +21,6 @@ class MainActivity : AppCompatActivity() {
         MainPresenter(this)
     }
 
-    private val groupieAdapter = GroupieAdapter()
-
     val swipePartidas by lazy {
         binding.swipePartidas
     }
@@ -32,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     val recyView by lazy {
         binding.recyViewPartidas
     }
+
+    private lateinit var partidasAdapter: PartidasAdapter
 
     var partidasOk = false
 
@@ -45,24 +43,17 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("mainActv", "depois do setContent")
 
-        setupRecyView()
-//        setupRefresh()
+        recyView.layoutManager = LinearLayoutManager(this)
+        presenter.findPartidas()
+        setupRefresh()
         setupFAB()
     }
 
-    private fun setupRecyView() {
-        Log.i("mainActv", "setupRecyView")
-        recyView.setHasFixedSize(true)
-        recyView.layoutManager = LinearLayoutManager(this)
-
-        presenter.findPartidas()
-
-        recyView.adapter = groupieAdapter
+    private fun setupRefresh() {
+        swipePartidas.setOnRefreshListener {
+            presenter.findPartidas()
+        }
     }
-
-//    private fun setupRefresh() {
-//        presenter.findPartidas()
-//    }
 
     private fun setupFAB() {
         val fabSimular = binding.fabSimular
@@ -82,10 +73,10 @@ class MainActivity : AppCompatActivity() {
 
     fun showPartidas(response: List<Partida>) {
         Log.i("mainAtcv", "showPartidas")
+        partidasAdapter = PartidasAdapter(response)
+        recyView.adapter = partidasAdapter
 
-        val listPartidaItem = response.map { PartidaItem(it) }
-        groupieAdapter.addAll(listPartidaItem)
-        groupieAdapter.notifyDataSetChanged()
+        partidasAdapter.notifyDataSetChanged()
     }
 
     fun showSnackBar(message: String) {
