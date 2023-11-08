@@ -65,6 +65,8 @@ class MainActivity : AppCompatActivity() {
 
                     if (partidasOk) {
                         presenter.newScore()
+                        partidasAdapter.notifyDataSetChanged()
+                        Log.i("mainActv", "chegou na newScore")
                     }
                 }
             }).start()
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showPartidas(response: List<Partida>) {
-        Log.i("mainAtcv", "showPartidas")
+        Log.i("mainActv", "showPartidas")
         partidasAdapter = PartidasAdapter(response)
         recyView.adapter = partidasAdapter
 
