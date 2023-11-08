@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity() {
         Log.i("mainActv", "antes do super")
 
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
 
         Log.i("mainActv", "depois do setContent")

@@ -1,11 +1,13 @@
 package com.cdom.simuladordepartidas.ui.recy_view
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cdom.simuladordepartidas.core.models.Partida
 import com.cdom.simuladordepartidas.databinding.PartidaItemBinding
+import com.cdom.simuladordepartidas.ui.activities.DetalhesActivity
 
 class PartidasAdapter(private val partidas: List<Partida>) : RecyclerView.Adapter<PartidasAdapter.VHolder>() {
 
@@ -34,9 +36,9 @@ class PartidasAdapter(private val partidas: List<Partida>) : RecyclerView.Adapte
         hbinding.tvPlacarVisitante.text = partida.timeVisitante.placar.toString()
 
         holder.itemView.setOnClickListener{
-//            val intent = Intent(contexto, DetalhesActivity::class.java)
-//            intent.putExtra(DetalhesActivity.Extras.PARTIDA, partida)
-//            contexto.startActivity(intent)
+            val intent = Intent(contexto, DetalhesActivity::class.java)
+            intent.putExtra(DetalhesActivity.Extras.PARTIDA, partida)
+            contexto.startActivity(intent)
         }
     }
 

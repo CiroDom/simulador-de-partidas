@@ -8,7 +8,9 @@ import com.cdom.simuladordepartidas.databinding.ActivityDetalhesBinding
 
 class DetalhesActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDetalhesBinding
+    private val binding by lazy {
+        ActivityDetalhesBinding.inflate(layoutInflater)
+    }
 
     object Extras {
         const val PARTIDA = "EXTRA_PARTIDA"
@@ -17,7 +19,6 @@ class DetalhesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityDetalhesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
