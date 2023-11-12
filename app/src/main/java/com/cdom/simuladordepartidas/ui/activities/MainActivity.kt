@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cdom.simuladordepartidas.core.models.Partida
 import com.cdom.simuladordepartidas.core.presenters.MainPresenter
+import com.cdom.simuladordepartidas.core.singleton.PlacarAntigo
 import com.cdom.simuladordepartidas.databinding.ActivityMainBinding
 import com.cdom.simuladordepartidas.ui.recy_view.PartidasAdapter
 import com.google.android.material.snackbar.Snackbar
@@ -39,11 +40,15 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         Log.i("mainActv", "depois do setContent")
 
         recyView.layoutManager = LinearLayoutManager(this)
         presenter.findPartidas()
+
+        if (PlacarAntigo.salvas) {
+            presenter.oldScore()
+        }
+
         setupRefresh()
         setupFAB()
     }

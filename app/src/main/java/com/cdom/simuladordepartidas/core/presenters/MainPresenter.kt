@@ -4,6 +4,7 @@ import android.util.Log
 import com.cdom.simuladordepartidas.core.http.OurCallbacks
 import com.cdom.simuladordepartidas.core.http.PartidaRemoteDataSource
 import com.cdom.simuladordepartidas.core.models.Partida
+import com.cdom.simuladordepartidas.core.singleton.PlacarAntigo
 import com.cdom.simuladordepartidas.ui.activities.MainActivity
 
 class MainPresenter(
@@ -32,6 +33,7 @@ class MainPresenter(
     fun findPartidas() {
         Log.i("Presenter", "findPartidas")
         dataSource.findPartidasFromAPI(this)
+        PlacarAntigo.salvas = false
     }
 
     fun newScore() {
@@ -39,12 +41,29 @@ class MainPresenter(
             return (0..stars).random()
         }
 
-        partidas.forEach { partida ->
-            partida.timeCasa.placar = randomScore(partida.timeCasa.estrelas)
-            partida.timeVisitante.placar = randomScore(partida.timeVisitante.estrelas)
+        with(PlacarAntigo) {
+            salvas = true
+            placarCasa.clear()
+            placarVisit.clear()
         }
 
+        partidas.forEach { partida ->
+            val placarCasa = randomScore(partida.timeCasa.estrelas)
+            partida.timeCasa.placar = placarCasa
+            PlacarAntigo.placarCasa.add(placarCasa)
 
+            val placarVisit = randomScore(partida.timeVisitante.estrelas)
+            partida.timeVisitante.placar = placarVisit
+            PlacarAntigo.placarVisit.add(placarVisit)
+        }
+
+    }
+
+    fun oldScore() {
+        partidas.forEachIndexed { index, partida ->
+            partida.timeCasa.placar = PlacarAntigo.placarCasa[index]
+            partida.timeVisitante.placar = PlacarAntigo.placarVisit[index]
+        }
     }
 
 }
